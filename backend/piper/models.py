@@ -24,6 +24,7 @@ class Locations(models.Model):
             'address': self.address
         }
 
+
 class Saved(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     location_id = models.ForeignKey(Locations, on_delete=models.CASCADE)
