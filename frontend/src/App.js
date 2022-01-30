@@ -1,21 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { getOneUser } from "./store/user";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { Routes, Route } from "react-router";
 import "./App.css";
+import Login from "./store/components/login/Login";
 
 function App() {
-  const [person, getPerson] = useState({});
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
-
-  useEffect(() => {
-    dispatch(getOneUser(1));
-  }, []);
-
   return (
-    <div className="App">
-      <header className="App-header">{user?.id}</header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Login />} />
+    </Routes>
   );
 }
 
