@@ -21,4 +21,6 @@ def one_user(request, user_id):
     else:
         data = json.dumps({'error': 'No such user!'})
 
+    # print(f'\n\n\n{request.method}\n\n\n')
+
     return HttpResponse(data, content_type='application/json')
