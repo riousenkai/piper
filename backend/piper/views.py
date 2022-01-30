@@ -12,3 +12,13 @@ def index(request):
                        'location': [loc.to_dict() for loc in locations]})
 
     return  HttpResponse(data, content_type='application/json')
+
+def one_user(request, user_id):
+    user = User.objects.get(id=user_id)
+
+    if user:
+        data = json.dumps({'user': user.to_dict()})
+    else:
+        data = json.dumps({'error': 'No such user!'})
+
+    return HttpResponse(data, content_type='application/json')

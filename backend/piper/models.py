@@ -8,8 +8,8 @@ class User(models.Model):
 
     def to_dict(self):
         return {
+            'id': self.id,
             'username': self.username,
-            'password': self.password,
             'image_url': self.image_url
         }
 
@@ -20,6 +20,7 @@ class Locations(models.Model):
 
     def to_dict(self):
         return {
+            'id': self.id,
             'name': self.name,
             'address': self.address
         }
@@ -31,6 +32,7 @@ class Saved(models.Model):
 
     def to_dict(self):
         return {
+            'id': self.id,
             'user_id': self.user_id,
             'location_id': self.location_id
         }
