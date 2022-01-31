@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getOneUser } from "../../user";
 import { useDispatch, useSelector } from "react-redux";
+import { getOneUser } from "../../user";
 
-const Login = () => {
+const Users = () => {
   const [person, getPerson] = useState({});
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
@@ -14,8 +14,9 @@ const Login = () => {
   return (
     <div>
       <div>{user?.username}</div>
+      <div>{user?.id}</div>
     </div>
   );
 };
 
-export default Login
+export default Users;
