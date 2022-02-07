@@ -33,7 +33,7 @@ const Home = () => {
       <div>Please Enter Your Location:</div>
       <input value={loc} onChange={(e) => setLoc(e.target.value)} />
       <button>Submit</button>
-      <Maps apiKey={apiKey} lat={data.lat} lng={data.long} />
+      <Maps apiKey={apiKey} lat={data?.lat} lng={data?.long} />
     </div>
   );
 };

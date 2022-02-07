@@ -16,8 +16,8 @@ class User(models.Model):
 class Locations(models.Model):
     name = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
-    lat = models.CharField(max_length=50)
-    lng = models.CharField(max_length=50)
+    lat = models.IntegerField(null=False)
+    lng = models.IntegerField(null=False)
     verified = models.CharField(max_length=50)
 
     def to_dict(self):
