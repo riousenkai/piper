@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getOneUser } from "../../user";
+import { getOneUser } from "../../store/user";
 
 const Users = () => {
   const [person, getPerson] = useState({});
