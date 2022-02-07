@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from piper.models import User, Locations, Saved
+from decouple import config
 import json
 
 
@@ -21,6 +22,8 @@ def one_user(request, user_id):
     else:
         data = json.dumps({'error': 'No such user!'})
 
-    # print(f'\n\n\n{request.method}\n\n\n')
-
     return HttpResponse(data, content_type='application/json')
+
+def get_api(request):
+
+    return HttpResponse(json.dumps({'key': config('GOOGLE_API_KEY')}))
