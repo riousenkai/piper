@@ -15,16 +15,23 @@ class User(models.Model):
 
 class Locations(models.Model):
     name = models.CharField(max_length=200)
-    address = models.CharField(max_length=200)
-    lat = models.IntegerField(null=False)
-    lng = models.IntegerField(null=False)
-    verified = models.CharField(max_length=50)
+    street = models.CharField(max_length=100)
+    state = models.CharField(max_length=20)
+    zip_code = models.IntegerField()
+    lat = models.IntegerField(default=0, null=False)
+    lng = models.IntegerField(default=0, null=False)
+    verified = models.BooleanField(default=False)
 
     def to_dict(self):
         return {
             'id': self.id,
             'name': self.name,
-            'address': self.address
+            'street': self.street,
+            'state': self.state,
+            'zip_code': self.zip_code,
+            'lat': self.lat,
+            'long': self.long,
+            'verified': self.verified
         }
 
 
