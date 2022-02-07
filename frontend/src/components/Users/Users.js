@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getOneUser } from "../../store/user";
 
 const Users = () => {
-  const [person, getPerson] = useState({});
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAPIKey } from "../../store/user";
 import Maps from "./Maps";
+import Geocode from "react-geocode";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,12 @@ const Home = () => {
       dispatch(getAPIKey());
     }
   }, [dispatch, apiKey]);
+
+  useEffect(() => {
+    if (apiKey) {
+      Geocode.setApiKey(apiKey);
+    }
+  }, [apiKey]);
 
   const locSuccess = (pos) => {
     const coords = pos.coords;
@@ -32,7 +39,21 @@ const Home = () => {
     <div>
       <div>Please Enter Your Location:</div>
       <input value={loc} onChange={(e) => setLoc(e.target.value)} />
-      <button>Submit</button>
+      <button
+        onClick={() => {
+          Geocode.fromAddress(loc).then(
+            (response) => {
+              const { lat, lng } = response.results[0].geometry.location;
+              setData({ lat: +lat, long: +lng });
+            },
+            (error) => {
+              console.error(error);
+            }
+          );
+        }}
+      >
+        Submit
+      </button>
       <Maps apiKey={apiKey} lat={data?.lat} lng={data?.long} />
     </div>
   );

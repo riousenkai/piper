@@ -22,7 +22,6 @@ export const getOneUser = (userId) => async (dispatch) => {
 export const getAPIKey = () => async (dispatch) => {
   const res = await fetch("/api/google");
   const data = await res.json();
-  console.log(data)
   if (res.ok) {
     dispatch(getAPI(data));
   }
