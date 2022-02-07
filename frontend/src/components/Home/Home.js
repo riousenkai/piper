@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAPIKey } from "../../store/user";
 import Maps from "./Maps";
 
-const Login = () => {
+const Home = () => {
   const dispatch = useDispatch();
   const apiKey = useSelector((state) => state.user?.key);
   const [loc, setLoc] = useState("");
@@ -24,8 +24,6 @@ const Login = () => {
     setData(navigator.geolocation.getCurrentPosition(locSuccess));
   }, []);
 
-  console.log(data)
-
   if (!apiKey) {
     return null;
   }
@@ -40,4 +38,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Home;

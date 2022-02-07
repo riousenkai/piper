@@ -30,4 +30,4 @@ const Maps = ({ apiKey, lat, lng }) => {
   );
 };
 
-export default React.memo(Maps)
+export default React.memo(Maps);

@@ -26,4 +26,4 @@ def one_user(request, user_id):
 
 def get_api(request):
 
-    return HttpResponse(json.dumps({'key': config('GOOGLE_API_KEY')}))
+    return HttpResponse(json.dumps({'key': config('GOOGLE_API_KEY')}), content_type='application/json')
