@@ -1,0 +1,50 @@
+.gm-style-mtc {
+  display: none;
+}
+.gm-svpc {
+  display: none;
+
+}
+.gmnoprint {
+  display: none;
+}
+.gm-style-cc {
+  display: none;
+}
+.marker__container {
+  /* background-color: aqua; */
+  border-radius: 0.8rem;
+  height: 25rem;
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+}
+.gm-style-iw {
+  /* border: 1px solid red; */
+  padding: 0 !important;
+}
+
+.gm-style-iw-d {
+  /* border: 1px solid blueviolet; */
+  overflow: hidden !important;
+}
+.gm-ui-hover-effect {
+    background-color: #fff !important;
+    top: 5px !important;
+    right: 5px !important;
+    border-radius: 0.8rem !important;
+    width: 25px !important;
+    height: 25px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 1 !important;
+  }
+.gm-style-iw-t::after {
+  border: 1px solid crimson;
+}
+
+.info-parent {
+  margin-bottom: 50px !important;
+  padding: 10px 30px 10px 10px;
+}

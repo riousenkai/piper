@@ -4,6 +4,7 @@ import { getAPIKey } from "../../store/user";
 import Maps from "./Maps";
 import Geocode from "react-geocode";
 import { getLatLong } from "../../helpers/homeHelpers";
+import './Home.css'
 
 const Home = () => {
   const dispatch = useDispatch();
