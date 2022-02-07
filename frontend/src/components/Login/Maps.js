@@ -6,16 +6,16 @@ const containerStyle = {
   height: "400px",
 };
 
-const center = {
-  lat: 38.9072,
-  lng: 77.0369,
-};
-
-const Maps = ({ apiKey }) => {
+const Maps = ({ apiKey, lat, lng }) => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: apiKey,
   });
+
+  const center = {
+    lat,
+    lng,
+  };
 
   return (
     <>
@@ -23,11 +23,11 @@ const Maps = ({ apiKey }) => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={10}
+          zoom={15}
         />
       )}
     </>
   );
 };
 
-export default Maps
+export default React.memo(Maps)

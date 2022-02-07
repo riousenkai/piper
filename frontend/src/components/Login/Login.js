@@ -6,6 +6,8 @@ import Maps from "./Maps";
 const Login = () => {
   const dispatch = useDispatch();
   const apiKey = useSelector((state) => state.user?.key);
+  const [loc, setLoc] = useState("");
+  const [data, setData] = useState("");
 
   useEffect(() => {
     if (!apiKey) {
@@ -13,13 +15,27 @@ const Login = () => {
     }
   }, [dispatch, apiKey]);
 
+  const locSuccess = (pos) => {
+    const coords = pos.coords;
+    setData({ lat: coords.latitude, long: coords.longitude });
+  };
+
+  useEffect(() => {
+    setData(navigator.geolocation.getCurrentPosition(locSuccess));
+  }, []);
+
+  console.log(data)
+
   if (!apiKey) {
     return null;
   }
 
   return (
     <div>
-      <Maps apiKey={apiKey} />
+      <div>Please Enter Your Location:</div>
+      <input value={loc} onChange={(e) => setLoc(e.target.value)} />
+      <button>Submit</button>
+      <Maps apiKey={apiKey} lat={data.lat} lng={data.long} />
     </div>
   );
 };
