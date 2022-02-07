@@ -31,6 +31,19 @@ const Maps = ({ apiKey, lat, lng }) => {
           center={center}
           zoom={15}
           clickableIcons={false}
+          options={{
+            styles: [
+              {
+                featureType: "poi",
+                stylers: [{ visibility: "off" }],
+              },
+              {
+                featureType: "transit",
+                elementType: "labels.icon",
+                stylers: [{ visibility: "off" }],
+              },
+            ],
+          }}
         >
           <Marker
             onClick={() =>
