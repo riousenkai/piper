@@ -18,8 +18,8 @@ class Locations(models.Model):
     street = models.CharField(max_length=100)
     state = models.CharField(max_length=20)
     zip_code = models.IntegerField()
-    lat = models.IntegerField(default=0, null=False)
-    lng = models.IntegerField(default=0, null=False)
+    lat = models.IntegerField(null=False)
+    lng = models.IntegerField(null=False)
     verified = models.BooleanField(default=False)
 
     def to_dict(self):
