@@ -33,8 +33,7 @@ def get_api(request):
 def marker(request):
     if request.method == 'POST':
         # print(f'\n\n\n{request.body}\n\n\n')
-
-        test = request.body
-        print(test)
+        json_data = json.loads(str(request.body, encoding='utf-8'))
+        print(json_data)
 
         return HttpResponse(json.dumps({'key': 'test'}), content_type="apllication/json")
