@@ -8,12 +8,8 @@ const NewClinic = ({ inactive, setInactive }) => {
   const [zip, setZip] = useState(null);
 
   useEffect(() => {
-    states.sort((a, b) => a.name[0] - b.name[0]);
     setInactive(false);
   }, []);
-
-  console.log(states)
-
 
   return (
     <form hidden={inactive}>
@@ -26,6 +22,7 @@ const NewClinic = ({ inactive, setInactive }) => {
         ))}
       </select>
       <input placeholder="Zip Code" />
+      <button>Submit</button>
     </form>
   );
 };
