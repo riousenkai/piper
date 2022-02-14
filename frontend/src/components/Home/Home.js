@@ -14,10 +14,6 @@ const Home = () => {
   const [data, setData] = useState({});
   const [inactive, setInactive] = useState(true)
 
-  // const date = new Date()
-
-  // console.log(date.getDate(), date.getHours(), date.getMinutes())
-
   useEffect(() => {
     if (!apiKey) {
       dispatch(getAPIKey());
@@ -52,7 +48,7 @@ const Home = () => {
       </div>
 
       <div>Enter a new clinic</div>
-      <NewClinic inactive={inactive} />
+      <NewClinic inactive={inactive} setInactive={setInactive} />
 
       {apiKey ? (
         <Maps apiKey={apiKey} lat={data?.lat} lng={data?.long} />
