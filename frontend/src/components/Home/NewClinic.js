@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { states } from "../../helpers/states";
 
 const NewClinic = ({ inactive, setInactive }) => {
@@ -7,21 +7,38 @@ const NewClinic = ({ inactive, setInactive }) => {
   const [state, setState] = useState("");
   const [zip, setZip] = useState(null);
 
-  useEffect(() => {
-    setInactive(false);
-  }, []);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(state);
+    console.log(zip);
+  };
 
   return (
-    <form hidden={inactive}>
-      <input placeholder="Clinic Name" />
-      <input placeholder="Street Address" />
+    <form hidden={inactive} onSubmit={onSubmit}>
+      <input
+        placeholder="Clinic Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <input
+        placeholder="Street Address"
+        value={address}
+        onChange={(e) => setAddress(e.target.value)}
+      />
+
       <select value={state} onChange={(e) => setState(e.target.value)}>
-        <option value={null}>Select a state</option>
+        <option value={null}>Choose State</option>
         {states.map((s) => (
           <option value={s.ab}>{s.name}</option>
         ))}
       </select>
-      <input placeholder="Zip Code" />
+
+      <input
+        type="number"
+        placeholder="Zip Code"
+        value={zip}
+        onChange={(e) => setZip(e.target.value)}
+      />
       <button>Submit</button>
     </form>
   );
