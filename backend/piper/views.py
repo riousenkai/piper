@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from piper.models import User, Locations, Saved
+from django.views.decorators.csrf import csrf_exempt
 from decouple import config
 import json
 
@@ -28,7 +29,12 @@ def get_api(request):
 
     return HttpResponse(json.dumps({'key': config('GOOGLE_API_KEY')}), content_type='application/json')
 
+@csrf_exempt
 def marker(request):
     if request.method == 'POST':
-        print(request.json)
-        return
+        # print(f'\n\n\n{request.body}\n\n\n')
+
+        test = request.body
+        print(test)
+
+        return HttpResponse(json.dumps({'key': 'test'}), content_type="apllication/json")
