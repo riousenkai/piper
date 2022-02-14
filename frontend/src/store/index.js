@@ -1,9 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import user from "./user";
+import marker from "./marker";
 
 const rootReducer = combineReducers({
   user,
+  marker,
 });
 
 let enhancer;

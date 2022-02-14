@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAPIKey } from "../../store/user";
+import { getLatLong } from "../../helpers/homeHelpers";
 import Maps from "./Maps";
 import Geocode from "react-geocode";
-import { getLatLong } from "../../helpers/homeHelpers";
-import "./Home.css";
 import NewClinic from "./NewClinic";
+import "./Home.css";
 
 const Home = () => {
   const dispatch = useDispatch();
