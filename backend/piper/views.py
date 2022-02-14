@@ -30,4 +30,5 @@ def get_api(request):
 
 def marker(request):
     if request.method == 'POST':
+        print(request.json)
         return

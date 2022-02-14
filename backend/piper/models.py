@@ -27,6 +27,7 @@ class Locations(models.Model):
             'id': self.id,
             'name': self.name,
             'street': self.street,
+            'city': self.city,
             'state': self.state,
             'zip_code': self.zip_code,
             'lat': self.lat,

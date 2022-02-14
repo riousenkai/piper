@@ -12,7 +12,7 @@ const Home = () => {
   const apiKey = useSelector((state) => state.user?.key);
   const [loc, setLoc] = useState("");
   const [data, setData] = useState({});
-  const [inactive, setInactive] = useState(true)
+  const [inactive, setInactive] = useState(false)
 
   useEffect(() => {
     if (!apiKey) {

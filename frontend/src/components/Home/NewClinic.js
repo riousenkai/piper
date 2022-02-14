@@ -1,16 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { states } from "../../helpers/states";
+import { getLatLong } from "../../helpers/homeHelpers";
+import { postMarker } from "../../store/marker";
 
 const NewClinic = ({ inactive, setInactive }) => {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zip, setZip] = useState(null);
+  const [lat, setLat] = useState(null);
+  const [long, setLong] = useState(null);
+
+  useEffect(() => {
+    const loc = `${address} ${city} ${state} ${zip}`;
+    getLatLong(loc).then((d) => {
+      setLat(d.lat);
+      setLong(d.long);
+    });
+
+  }, [state, zip]);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(state);
-    console.log(zip);
+
+    const obj = {
+      name,
+      street: address,
+      city,
+      state,
+      zip_code: zip,
+      lat,
+      long,
+    };
+
+    console.log(obj);
+
+    dispatch(postMarker(obj));
   };
 
   return (
@@ -24,6 +53,11 @@ const NewClinic = ({ inactive, setInactive }) => {
         placeholder="Street Address"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
+      />
+      <input
+        placeholder="City"
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
       />
 
       <select value={state} onChange={(e) => setState(e.target.value)}>
