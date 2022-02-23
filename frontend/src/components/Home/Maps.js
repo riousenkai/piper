@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getMarkers } from "../../store/marker";
 import {
   GoogleMap,
@@ -15,8 +15,8 @@ const containerStyle = {
 
 const Maps = ({ apiKey, lat, lng }) => {
   const dispatch = useDispatch();
+  const markers = useSelector((state) => state.marker.markers);
   const [selected, setSelected] = useState(null);
-  const [markers, setMarkers] = useState(null);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -29,7 +29,7 @@ const Maps = ({ apiKey, lat, lng }) => {
   };
 
   useEffect(() => {
-    dispatch(getMarkers()).then((data) => setMarkers(data));
+    dispatch(getMarkers());
   }, []);
 
   return (
@@ -54,7 +54,23 @@ const Maps = ({ apiKey, lat, lng }) => {
             ],
           }}
         >
-          <Marker
+          {markers &&
+            markers.map((marker, i) => (
+              <Marker
+                onClick={() =>
+                  setSelected(marker)
+                }
+                position={{ lat: marker.lat, lng: marker.lng }}
+                icon={{
+                  url: "/vet-marker.png",
+                  scaledSize: new window.google.maps.Size(40, 40),
+                  origin: new window.google.maps.Point(0, 0),
+                  anchor: new window.google.maps.Point(20, 10),
+                }}
+                key={marker + i}
+              />
+            ))}
+          {/* <Marker
             onClick={() =>
               setSelected({ lat: 29.72951793201924, lng: -95.42534553080883 })
             }
@@ -65,16 +81,16 @@ const Maps = ({ apiKey, lat, lng }) => {
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(20, 10),
             }}
-          />
+          /> */}
           {selected !== null && (
             <InfoWindow
               position={{ lat: +selected.lat, lng: +selected.lng }}
               onCloseClick={() => setSelected(null)}
             >
               <div className="info-parent">
-                <div>WEEEEEEEEEEEEEEEEEEEEEEEEEEEE</div>
-                <div>Test</div>
-                <div>Address</div>
+                <div>{selected.name}</div>
+                <div>{selected.street}</div>
+                <div>{selected.city}, {selected.state} {selected.zip_code}</div>
               </div>
             </InfoWindow>
           )}
