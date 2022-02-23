@@ -40,12 +40,12 @@ def marker(request):
                                 state=json_data['state'],
                                 zip_code=json_data['zip_code'],
                                 lat=json_data['lat'],
-                                long=json_data['long'])
+                                lng=json_data['lng'])
 
         saved_marker.save()
 
         locations = Locations.objects.all()
 
-        data = json.dumps({'locations': [marker for marker in locations]})
+        data = json.dumps({'locations': [marker.to_dict() for marker in locations]})
 
         return HttpResponse(data, content_type="apllication/json")

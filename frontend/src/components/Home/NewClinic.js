@@ -38,7 +38,7 @@ const NewClinic = ({ inactive, setInactive }) => {
       state,
       zip_code: zip,
       lat,
-      long,
+      lng: long,
     };
 
     console.log(obj);

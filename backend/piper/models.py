@@ -16,10 +16,11 @@ class User(models.Model):
 class Locations(models.Model):
     name = models.CharField(max_length=200)
     street = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
     state = models.CharField(max_length=20)
     zip_code = models.IntegerField()
-    lat = models.IntegerField(null=False)
-    lng = models.IntegerField(null=False)
+    lat = models.FloatField(null=False)
+    lng = models.FloatField(null=False)
     verified = models.BooleanField(default=False)
 
     def to_dict(self):
@@ -31,7 +32,7 @@ class Locations(models.Model):
             'state': self.state,
             'zip_code': self.zip_code,
             'lat': self.lat,
-            'long': self.long,
+            'lng': self.lng,
             'verified': self.verified
         }
 
