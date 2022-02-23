@@ -5,7 +5,6 @@ from django.views.decorators.csrf import csrf_exempt
 from decouple import config
 import json
 
-
 def index(request):
     users = User.objects.all()
     locations = Locations.objects.filter(name="Test")

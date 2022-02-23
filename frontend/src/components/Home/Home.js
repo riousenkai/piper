@@ -47,8 +47,10 @@ const Home = () => {
         </button>
       </div>
 
-      <div>Enter a new clinic</div>
+      <div>
+      <button hidden={inactive} onClick={() => setInactive((old) => !old)}>Enter a new clinic</button>
       <NewClinic inactive={inactive} setInactive={setInactive} />
+      </div>
 
       {apiKey ? (
         <Maps apiKey={apiKey} lat={data?.lat} lng={data?.long} />

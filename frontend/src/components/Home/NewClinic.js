@@ -21,11 +21,15 @@ const NewClinic = ({ inactive, setInactive }) => {
       setLat(d.lat);
       setLong(d.long);
     });
-
   }, [state, zip]);
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    if ((!name || !address, !city, !state, !zip)) {
+      window.alert("Please fill out the form!");
+      return;
+    }
 
     const obj = {
       name,
@@ -43,7 +47,7 @@ const NewClinic = ({ inactive, setInactive }) => {
   };
 
   return (
-    <form hidden={inactive} onSubmit={onSubmit}>
+    <form hidden={!inactive} onSubmit={onSubmit}>
       <input
         placeholder="Clinic Name"
         value={name}
