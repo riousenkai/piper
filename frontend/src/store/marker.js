@@ -6,7 +6,7 @@ const retrieveMarkers = (markers) => ({
 });
 
 export const getMarkers = () => async (dispatch) => {
-  const res = await fetch(`/api/markers`);
+  const res = await fetch(`/api/markers/new`);
   const data = await res.json();
   if (res.ok) {
     dispatch(retrieveMarkers(data));
@@ -35,7 +35,7 @@ const initialState = {};
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_MARKER:
-      return { ...state, markers: action.payload };
+      return { ...state, markers: action.payload.locations };
     default:
       return state;
   }

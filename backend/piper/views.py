@@ -44,8 +44,8 @@ def marker(request):
 
         saved_marker.save()
 
-        locations = Locations.objects.all()
+    locations = Locations.objects.all()
 
-        data = json.dumps({'locations': [marker.to_dict() for marker in locations]})
+    data = json.dumps({'locations': [marker.to_dict() for marker in locations]})
 
-        return HttpResponse(data, content_type="apllication/json")
+    return HttpResponse(data, content_type="apllication/json")

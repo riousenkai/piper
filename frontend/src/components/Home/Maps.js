@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getMarkers } from "../../store/marker";
 import {
   GoogleMap,
   useJsApiLoader,
@@ -12,7 +14,10 @@ const containerStyle = {
 };
 
 const Maps = ({ apiKey, lat, lng }) => {
+  const dispatch = useDispatch();
   const [selected, setSelected] = useState(null);
+  const [markers, setMarkers] = useState(null);
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: apiKey,
@@ -22,6 +27,10 @@ const Maps = ({ apiKey, lat, lng }) => {
     lat,
     lng,
   };
+
+  useEffect(() => {
+    dispatch(getMarkers()).then((data) => setMarkers(data));
+  }, []);
 
   return (
     <>

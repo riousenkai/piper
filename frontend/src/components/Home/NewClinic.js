@@ -55,6 +55,7 @@ const NewClinic = ({ inactive, setInactive }) => {
 
     dispatch(postMarker(obj));
     reset(e)
+    window.alert("Successfully added to the database!")
   };
 
   return (
