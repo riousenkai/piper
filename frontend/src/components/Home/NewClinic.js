@@ -14,7 +14,7 @@ const NewClinic = ({ inactive, setInactive }) => {
   const [zip, setZip] = useState(null);
   const [lat, setLat] = useState(null);
   const [long, setLong] = useState(null);
-  const [phone, setPhone] = useState(null)
+  const [phone, setPhone] = useState(null);
 
   useEffect(() => {
     const loc = `${address} ${city} ${state} ${zip}`;
@@ -32,7 +32,7 @@ const NewClinic = ({ inactive, setInactive }) => {
     setCity("");
     setState("");
     setZip(null);
-    setPhone(null)
+    setPhone(null);
 
     setInactive((old) => !old);
   };
@@ -45,6 +45,8 @@ const NewClinic = ({ inactive, setInactive }) => {
       return;
     }
 
+    const justPhone = phone.replace(/\D/g, "");
+
     const obj = {
       name,
       street: address,
@@ -53,12 +55,12 @@ const NewClinic = ({ inactive, setInactive }) => {
       zip_code: zip,
       lat,
       lng: long,
-      phone,
+      phone: +justPhone,
     };
 
     dispatch(postMarker(obj));
-    reset(e)
-    window.alert("Successfully added to the database!")
+    reset(e);
+    window.alert("Successfully added to the database!");
   };
 
   return (
@@ -94,11 +96,11 @@ const NewClinic = ({ inactive, setInactive }) => {
       />
 
       <input
-        type="number"
+        type="tel"
         placeholder="Contact Number"
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
-        />
+      />
 
       <button>Submit</button>
       <button onClick={reset}>Cancel</button>

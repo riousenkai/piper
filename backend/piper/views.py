@@ -40,7 +40,8 @@ def marker(request):
                                 state=json_data['state'],
                                 zip_code=json_data['zip_code'],
                                 lat=json_data['lat'],
-                                lng=json_data['lng'])
+                                lng=json_data['lng'],
+                                phone=json_data['phone'])
 
         saved_marker.save()
 
