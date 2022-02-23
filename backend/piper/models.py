@@ -21,7 +21,7 @@ class Locations(models.Model):
     zip_code = models.IntegerField()
     lat = models.FloatField(null=False)
     lng = models.FloatField(null=False)
-    phone = models.IntegerField()
+    phone = models.BigIntegerField()
     verified = models.BooleanField(default=False)
 
     def to_dict(self):

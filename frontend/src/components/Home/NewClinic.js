@@ -31,8 +31,8 @@ const NewClinic = ({ inactive, setInactive }) => {
     setAddress("");
     setCity("");
     setState("");
-    setZip(null);
-    setPhone(null);
+    setZip();
+    setPhone();
 
     setInactive((old) => !old);
   };

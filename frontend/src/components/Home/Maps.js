@@ -7,6 +7,7 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
+import { phoneConverter } from "../../helpers/mapHelpers";
 
 const containerStyle = {
   width: "800px",
@@ -57,9 +58,7 @@ const Maps = ({ apiKey, lat, lng }) => {
           {markers &&
             markers.map((marker, i) => (
               <Marker
-                onClick={() =>
-                  setSelected(marker)
-                }
+                onClick={() => setSelected(marker)}
                 position={{ lat: marker.lat, lng: marker.lng }}
                 icon={{
                   url: "/vet-marker.png",
@@ -78,7 +77,10 @@ const Maps = ({ apiKey, lat, lng }) => {
               <div className="info-parent">
                 <div>{selected.name}</div>
                 <div>{selected.street}</div>
-                <div>{selected.city}, {selected.state} {selected.zip_code}</div>
+                <div>
+                  {selected.city}, {selected.state} {selected.zip_code}
+                </div>
+                <div>{phoneConverter(selected.phone)}</div>
               </div>
             </InfoWindow>
           )}
