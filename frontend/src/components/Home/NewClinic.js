@@ -27,7 +27,7 @@ const NewClinic = ({ inactive, setInactive }) => {
     e.preventDefault();
 
     if ((!name || !address, !city, !state, !zip)) {
-      window.alert("Please fill out the form!");
+      window.alert("Please complete the form!");
       return;
     }
 
@@ -44,6 +44,17 @@ const NewClinic = ({ inactive, setInactive }) => {
     console.log(obj);
 
     dispatch(postMarker(obj));
+  };
+
+  const reset = (e) => {
+    e.preventDefault();
+    setName("");
+    setAddress("");
+    setCity("");
+    setState("");
+    setZip(null);
+
+    setInactive((old) => !old);
   };
 
   return (
@@ -78,6 +89,7 @@ const NewClinic = ({ inactive, setInactive }) => {
         onChange={(e) => setZip(e.target.value)}
       />
       <button>Submit</button>
+      <button onClick={reset}>Cancel</button>
     </form>
   );
 };

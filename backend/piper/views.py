@@ -34,5 +34,18 @@ def marker(request):
         # print(f'\n\n\n{request.body}\n\n\n')
         json_data = json.loads(str(request.body, encoding='utf-8'))
         print(json_data)
+        saved_marker = Locations(name=json_data['name'],
+                                street=json_data['street'],
+                                city=json_data['city'],
+                                state=json_data['state'],
+                                zip_code=json_data['zip_code'],
+                                lat=json_data['lat'],
+                                long=json_data['long'])
 
-        return HttpResponse(json.dumps({'key': 'test'}), content_type="apllication/json")
+        saved_marker.save()
+
+        locations = Locations.objects.all()
+
+        data = json.dumps({'locations': [marker for marker in locations]})
+
+        return HttpResponse(data, content_type="apllication/json")
