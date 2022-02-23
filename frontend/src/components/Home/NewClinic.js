@@ -23,6 +23,18 @@ const NewClinic = ({ inactive, setInactive }) => {
     });
   }, [state, zip]);
 
+  const reset = (e) => {
+    e.preventDefault();
+
+    setName("");
+    setAddress("");
+    setCity("");
+    setState("");
+    setZip(null);
+
+    setInactive((old) => !old);
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -41,20 +53,8 @@ const NewClinic = ({ inactive, setInactive }) => {
       lng: long,
     };
 
-    console.log(obj);
-
     dispatch(postMarker(obj));
-  };
-
-  const reset = (e) => {
-    e.preventDefault();
-    setName("");
-    setAddress("");
-    setCity("");
-    setState("");
-    setZip(null);
-
-    setInactive((old) => !old);
+    reset(e)
   };
 
   return (
