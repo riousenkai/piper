@@ -14,6 +14,7 @@ const NewClinic = ({ inactive, setInactive }) => {
   const [zip, setZip] = useState(null);
   const [lat, setLat] = useState(null);
   const [long, setLong] = useState(null);
+  const [phone, setPhone] = useState(null)
 
   useEffect(() => {
     const loc = `${address} ${city} ${state} ${zip}`;
@@ -31,6 +32,7 @@ const NewClinic = ({ inactive, setInactive }) => {
     setCity("");
     setState("");
     setZip(null);
+    setPhone(null)
 
     setInactive((old) => !old);
   };
@@ -51,6 +53,7 @@ const NewClinic = ({ inactive, setInactive }) => {
       zip_code: zip,
       lat,
       lng: long,
+      phone,
     };
 
     dispatch(postMarker(obj));
@@ -89,6 +92,14 @@ const NewClinic = ({ inactive, setInactive }) => {
         value={zip}
         onChange={(e) => setZip(e.target.value)}
       />
+
+      <input
+        type="number"
+        placeholder="Contact Number"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+        />
+
       <button>Submit</button>
       <button onClick={reset}>Cancel</button>
     </form>
