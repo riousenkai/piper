@@ -4,7 +4,7 @@ import { states } from "../../helpers/states";
 import { getLatLong } from "../../helpers/homeHelpers";
 import { postMarker } from "../../store/marker";
 
-const NewClinic = ({ inactive, setInactive }) => {
+const NewClinic = ({ inactive, setInactive, setData }) => {
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
@@ -60,6 +60,7 @@ const NewClinic = ({ inactive, setInactive }) => {
 
     dispatch(postMarker(obj));
     reset(e);
+    setData({ lat, long: long });
     window.alert("Successfully added to the database!");
   };
 

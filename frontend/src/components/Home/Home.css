@@ -1,13 +1,18 @@
-.gm-style-mtc {
+/* map or satellite option */
+/* .gm-style-mtc {
   display: none;
-}
+} */
+
 .gm-svpc {
   display: none;
 
 }
-.gmnoprint {
+
+/* zoom controls */
+/* .gmnoprint {
   display: none;
-}
+} */
+
 .gm-style-cc {
   display: none;
 }

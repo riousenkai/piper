@@ -49,7 +49,7 @@ const Home = () => {
 
       <div>
       <button hidden={inactive} onClick={() => setInactive((old) => !old)}>Enter a new clinic</button>
-      <NewClinic inactive={inactive} setInactive={setInactive} />
+      <NewClinic inactive={inactive} setInactive={setInactive} setData={setData} />
       </div>
 
       {apiKey ? (
