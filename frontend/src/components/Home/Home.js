@@ -12,7 +12,7 @@ const Home = () => {
   const apiKey = useSelector((state) => state.user?.key);
   const [loc, setLoc] = useState("");
   const [data, setData] = useState({});
-  const [inactive, setInactive] = useState(false)
+  const [inactive, setInactive] = useState(false);
 
   useEffect(() => {
     if (!apiKey) {
@@ -32,7 +32,7 @@ const Home = () => {
 
   return (
     <div className="home-main">
-      <div className="home-ad">Please Enter Your Current Address:</div>
+      <div className="home-test">Please Enter Your Current Address:</div>
 
       <div className="address-loc">
         <input
@@ -48,8 +48,14 @@ const Home = () => {
       </div>
 
       <div>
-      <button hidden={inactive} onClick={() => setInactive((old) => !old)}>Enter a new clinic</button>
-      <NewClinic inactive={inactive} setInactive={setInactive} setData={setData} />
+        <button hidden={inactive} onClick={() => setInactive((old) => !old)}>
+          Enter a new clinic
+        </button>
+        <NewClinic
+          inactive={inactive}
+          setInactive={setInactive}
+          setData={setData}
+        />
       </div>
 
       {apiKey ? (
