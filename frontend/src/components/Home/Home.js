@@ -31,8 +31,8 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <div>Please Enter Location:</div>
+    <div className="home-main">
+      <div className="home-ad">Please Enter Your Current Address:</div>
 
       <div className="address-loc">
         <input
