@@ -84,7 +84,7 @@ const Maps = ({ apiKey, lat, lng }) => {
                 <div>{selected.name}</div>
                 <a
                   // href={`https://www.google.com/maps/search/?api=1&query=${selected.lat}%2C${selected.lng}`}
-                  href={`https://www.google.com/maps/search/?api=1&query=${current}`}
+                  href={`https://www.google.com/maps/search/?api=1&query=${current}+${selected.street}+${selected.city}+${selected.state}+${selected.zip_code}`}
                   target="_blank"
                 >
                   <div>{selected.street}</div>
