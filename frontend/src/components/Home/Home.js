@@ -45,6 +45,7 @@ const Home = () => {
           }
           style={focus ? addressFocus : addressStyle}
           onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
         />
         <button onClick={() => getLatLong(loc).then((d) => setData(d))}>
           Submit
