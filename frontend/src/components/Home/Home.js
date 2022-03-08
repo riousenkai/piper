@@ -50,7 +50,7 @@ const Home = () => {
         <button
           onClick={() => getLatLong(loc).then((d) => setData(d))}
           style={buttonStyle}
-          >
+        >
           Submit
         </button>
       </div>

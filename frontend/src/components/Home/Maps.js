@@ -18,6 +18,7 @@ const Maps = ({ apiKey, lat, lng }) => {
   const dispatch = useDispatch();
   const markers = useSelector((state) => state.marker.markers);
   const [selected, setSelected] = useState(null);
+  const [current, setCurrent] = useState();
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -32,6 +33,11 @@ const Maps = ({ apiKey, lat, lng }) => {
   useEffect(() => {
     dispatch(getMarkers());
   }, []);
+
+  useEffect(() => {
+    const str = selected?.name.replace(" ", "+");
+    setCurrent(str);
+  }, [selected?.name]);
 
   return (
     <>
@@ -76,10 +82,16 @@ const Maps = ({ apiKey, lat, lng }) => {
             >
               <div className="info-parent">
                 <div>{selected.name}</div>
-                <div>{selected.street}</div>
-                <div>
-                  {selected.city}, {selected.state} {selected.zip_code}
-                </div>
+                <a
+                  // href={`https://www.google.com/maps/search/?api=1&query=${selected.lat}%2C${selected.lng}`}
+                  href={`https://www.google.com/maps/search/?api=1&query=${current}`}
+                  target="_blank"
+                >
+                  <div>{selected.street}</div>
+                  <div>
+                    {selected.city}, {selected.state} {selected.zip_code}
+                  </div>
+                </a>
                 <div>{phoneConverter(selected.phone)}</div>
               </div>
             </InfoWindow>
