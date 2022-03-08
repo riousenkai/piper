@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAPIKey } from "../../store/user";
 import { getLatLong } from "../../helpers/homeHelpers";
+import { addressStyle, addressFocus } from "./HomeStyle";
 import Maps from "./Maps";
 import Geocode from "react-geocode";
 import NewClinic from "./NewClinic";
@@ -13,6 +14,7 @@ const Home = () => {
   const [loc, setLoc] = useState("");
   const [data, setData] = useState({});
   const [inactive, setInactive] = useState(false);
+  const [focus, setFocus] = useState(false)
 
   useEffect(() => {
     if (!apiKey) {
@@ -41,6 +43,8 @@ const Home = () => {
           onKeyPress={(e) =>
             e.key === "Enter" && getLatLong(loc).then((d) => setData(d))
           }
+          style={focus ? addressFocus : addressStyle}
+          onFocus={() => setFocus(true)}
         />
         <button onClick={() => getLatLong(loc).then((d) => setData(d))}>
           Submit
