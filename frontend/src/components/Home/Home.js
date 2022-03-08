@@ -41,7 +41,7 @@ const Home = () => {
           value={loc}
           onChange={(e) => setLoc(e.target.value)}
           onKeyPress={(e) =>
-            e.key === "Enter" && getLatLong(loc).then((d) => setData(d))
+            e.key === "Enter" && loc && getLatLong(loc).then((d) => setData(d))
           }
           style={focus ? addressFocus : addressStyle}
           onFocus={() => setFocus(true)}
@@ -50,7 +50,7 @@ const Home = () => {
         <button
           onClick={() => getLatLong(loc).then((d) => setData(d))}
           style={buttonStyle}
-        >
+          >
           Submit
         </button>
       </div>
